@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.vetcare360.controller.VeterinarianListController">
+    <top>
+        <VBox alignment="CENTER" spacing="10" style="-fx-background-color: #f0f8ff;">
+            <padding>
+                <Insets top="20" bottom="20" left="20" right="20" />
+            </padding>
+            <HBox alignment="CENTER_LEFT">
+                <Button fx:id="btnBack" style="-fx-background-color: transparent;">
+                    <onAction>#navigateBack</onAction>
+                    <graphic>
+                        <Label text="← Retour" style="-fx-font-size: 14px; -fx-text-fill: #2e86c1;" />
+                    </graphic>
+                </Button>
+                <HBox HBox.hgrow="ALWAYS" />
+                <ImageView fitHeight="60.0" fitWidth="150.0" preserveRatio="true">
+                    <Image url="@../images/logo.png" />
+                </ImageView>
+            </HBox>
+            <Label text="Liste des Vétérinaires" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #2e86c1;" />
+        </VBox>
+    </top>
+
+    <center>
+        <VBox spacing="20" style="-fx-background-color: white;">
+            <padding>
+                <Insets top="20" bottom="20" left="30" right="30" />
+            </padding>
+
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <TextField fx:id="txtSearch" promptText="Rechercher un vétérinaire..." prefWidth="300" />
+                <Button fx:id="btnSearch" text="Rechercher"
+                        style="-fx-background-color: #3498db; -fx-text-fill: white;" >
+                    <onAction>#searchVeterinarians</onAction>
+                </Button>
+            </HBox>
+
+            <TableView fx:id="vetTable" VBox.vgrow="ALWAYS">
+                <columns>
+                    <TableColumn fx:id="colId" text="ID" prefWidth="50" />
+                    <TableColumn fx:id="colFirstName" text="Prénom" prefWidth="150" />
+                    <TableColumn fx:id="colLastName" text="Nom" prefWidth="150" />
+                    <TableColumn fx:id="colSpecialty" text="Spécialité" prefWidth="200" />
+                    <TableColumn fx:id="colPhone" text="Téléphone" prefWidth="150" />
+                    <TableColumn fx:id="colEmail" text="Email" prefWidth="200" />
+                </columns>
+            </TableView>
+
+            <HBox spacing="10" alignment="CENTER_RIGHT">
+                <Button fx:id="btnRefresh" text="Actualiser"
+                        style="-fx-background-color: #2ecc71; -fx-text-fill: white;" >
+                    <onAction>#refreshVeterinarians</onAction>
+                </Button>
+            </HBox>
+        </VBox>
+    </center>
+
+    <bottom>
+        <HBox alignment="CENTER" style="-fx-background-color: #2e86c1; -fx-padding: 10;">
+            <Label text="© 2025 VetCare 360 - Tous Droits Réservés" style="-fx-text-fill: white;" />
+        </HBox>
+    </bottom>
+</BorderPane>

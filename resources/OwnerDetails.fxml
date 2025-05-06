@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.vetcare360.controller.OwnerDetailsController">
+    <top>
+        <VBox alignment="CENTER" spacing="10" style="-fx-background-color: #f0f8ff;">
+            <padding>
+                <Insets top="20" bottom="20" left="20" right="20" />
+            </padding>
+            <HBox alignment="CENTER_LEFT">
+                <Button fx:id="btnBack" style="-fx-background-color: transparent;">
+                    <onAction>#navigateBack</onAction>
+                    <graphic>
+                        <Label text="← Retour" style="-fx-font-size: 14px; -fx-text-fill: #2e86c1;" />
+                    </graphic>
+                </Button>
+                <HBox HBox.hgrow="ALWAYS" />
+                <ImageView fitHeight="60.0" fitWidth="150.0" preserveRatio="true">
+                    <Image url="@../images/logo.png" />
+                </ImageView>
+            </HBox>
+            <Label text="Détails du Propriétaire" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #2e86c1;" />
+        </VBox>
+    </top>
+
+    <center>
+        <ScrollPane fitToWidth="true" style="-fx-background-color: transparent;">
+            <VBox spacing="25" style="-fx-background-color: white;">
+                <padding>
+                    <Insets top="25" bottom="25" left="40" right="40" />
+                </padding>
+
+                <!-- Informations du propriétaire -->
+                <VBox spacing="15" style="-fx-background-color: #f8f9fa; -fx-padding: 15px; -fx-background-radius: 5px;">
+                    <HBox spacing="20" alignment="CENTER_LEFT">
+                        <VBox spacing="5" HBox.hgrow="ALWAYS">
+                            <Label fx:id="lblOwnerName" text="Nom du propriétaire" style="-fx-font-size: 20px; -fx-font-weight: bold;" />
+                            <Label fx:id="lblOwnerContact" text="Contact: email@example.com | Téléphone: 0600000000" style="-fx-font-size: 14px;" />
+                            <Label fx:id="lblOwnerAddress" text="Adresse: 123 Rue Example, Ville, Code Postal" style="-fx-font-size: 14px;" />
+                        </VBox>
+                        <HBox spacing="10">
+                            <Button fx:id="btnEditOwner" text="Modifier"
+                                    style="-fx-background-color: #3498db; -fx-text-fill: white;" >
+                                <onAction>#navigateToModifyOwner</onAction>
+                            </Button>
+                        </HBox>
+                    </HBox>
+                </VBox>
+
+                <!-- Section des animaux -->
+                <VBox spacing="15">
+                    <HBox alignment="CENTER_LEFT" spacing="15">
+                        <Label text="Animaux de Compagnie" style="-fx-font-size: 18px; -fx-font-weight: bold;" />
+                        <HBox HBox.hgrow="ALWAYS" />
+                        <Button fx:id="btnAddAnimal" text="Ajouter un animal"
+                                style="-fx-background-color: #2ecc71; -fx-text-fill: white;" >
+                            <onAction>#navigateToAddAnimal</onAction>
+                        </Button>
+                    </HBox>
+
+                    <TableView fx:id="animalTable" VBox.vgrow="ALWAYS">
+                        <columns>
+                            <TableColumn fx:id="colAnimalId" text="ID" prefWidth="50" />
+                            <TableColumn fx:id="colAnimalName" text="Nom" prefWidth="100" />
+                            <TableColumn fx:id="colAnimalSpecies" text="Espèce" prefWidth="100" />
+                            <TableColumn fx:id="colAnimalBreed" text="Race" prefWidth="100" />
+                            <TableColumn fx:id="colAnimalBirthDate" text="Date de Naissance" prefWidth="130" />
+                            <TableColumn fx:id="colAnimalActions" text="Actions" prefWidth="150" />
+                        </columns>
+                    </TableView>
+                </VBox>
+
+                <!-- Détails de l'animal sélectionné et ses visites -->
+                <VBox fx:id="selectedAnimalDetails" spacing="15" visible="false">
+                    <Label text="Détails de l'Animal Sélectionné" style="-fx-font-size: 16px; -fx-font-weight: bold;" />
+
+                    <VBox spacing="5" style="-fx-background-color: #f8f9fa; -fx-padding: 15px; -fx-background-radius: 5px;">
+                        <HBox spacing="10">
+                            <Label text="Nom:" style="-fx-font-weight: bold;" />
+                            <Label fx:id="lblSelectedAnimalName" text="Nom de l'animal" />
+                        </HBox>
+                        <HBox spacing="10">
+                            <Label text="Espèce:" style="-fx-font-weight: bold;" />
+                            <Label fx:id="lblSelectedAnimalSpecies" text="Espèce" />
+                        </HBox>
+                        <HBox spacing="10">
+                            <Label text="Race:" style="-fx-font-weight: bold;" />
+                            <Label fx:id="lblSelectedAnimalBreed" text="Race" />
+                        </HBox>
+                        <HBox spacing="10">
+                            <Label text="Date de Naissance:" style="-fx-font-weight: bold;" />
+                            <Label fx:id="lblSelectedAnimalBirthDate" text="Date de naissance" />
+                        </HBox>
+                    </VBox>
+
+                    <HBox alignment="CENTER_LEFT" spacing="15">
+                        <Label text="Historique des Visites" style="-fx-font-size: 16px; -fx-font-weight: bold;" />
+                        <HBox HBox.hgrow="ALWAYS" />
+                        <Button fx:id="btnAddVisit" text="Ajouter une visite"
+                                style="-fx-background-color: #9b59b6; -fx-text-fill: white;" >
+                            <onAction>#navigateToAddVisit</onAction>
+                        </Button>
+                    </HBox>
+
+                    <TableView fx:id="visitTable" VBox.vgrow="ALWAYS">
+                        <columns>
+                            <TableColumn fx:id="colVisitId" text="ID" prefWidth="50" />
+                            <TableColumn fx:id="colVisitDate" text="Date" prefWidth="100" />
+                            <TableColumn fx:id="colVisitReason" text="Motif" prefWidth="150" />
+                            <TableColumn fx:id="colVisitDiagnosis" text="Diagnostic" prefWidth="200" />
+                            <TableColumn fx:id="colVisitTreatment" text="Traitement" prefWidth="200" />
+                            <TableColumn fx:id="colVisitVeterinarian" text="Vétérinaire" prefWidth="150" />
+                        </columns>
+                    </TableView>
+                </VBox>
+            </VBox>
+        </ScrollPane>
+    </center>
+
+    <bottom>
+        <HBox alignment="CENTER" style="-fx-background-color: #2e86c1; -fx-padding: 10;">
+            <Label text="© 2025 VetCare 360 - Tous Droits Réservés" style="-fx-text-fill: white;" />
+        </HBox>
+    </bottom>
+</BorderPane>

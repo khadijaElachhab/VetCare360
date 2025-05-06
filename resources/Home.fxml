@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.vetcare360.controller.HomeController">
+    <top>
+        <VBox alignment="CENTER" spacing="20" style="-fx-background-color: #f0f8ff;">
+            <padding>
+                <Insets top="30" bottom="30" left="20" right="20" />
+            </padding>
+            <ImageView fitHeight="150.0" fitWidth="350.0" preserveRatio="true">
+                <Image url="@../images/logo.png" />
+            </ImageView>
+            <Label text="VetCare 360" style="-fx-font-size: 36px; -fx-font-weight: bold; -fx-text-fill: #2e86c1;" />
+            <Label text="Système de Gestion de Clinique Vétérinaire" style="-fx-font-size: 18px; -fx-text-fill: #566573;" />
+        </VBox>
+    </top>
+
+    <center>
+        <VBox alignment="CENTER" spacing="25" style="-fx-background-color: white;">
+            <padding>
+                <Insets top="30" bottom="30" left="50" right="50" />
+            </padding>
+
+            <Label text="Menu Principal" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #2e86c1;" />
+
+            <Button fx:id="btnSearchOwner" onAction="#navigateToOwnerSearch" prefWidth="300" prefHeight="50"
+                    style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-size: 16px;">
+                <graphic>
+                    <HBox spacing="10" alignment="CENTER_LEFT">
+                        <Label text="🔍 Rechercher un propriétaire" style="-fx-text-fill: white; -fx-font-size: 16px;" />
+                    </HBox>
+                </graphic>
+            </Button>
+
+            <Button fx:id="btnNewOwner" onAction="#navigateToNewOwner" prefWidth="300" prefHeight="50"
+                    style="-fx-background-color: #2ecc71; -fx-text-fill: white; -fx-font-size: 16px;">
+                <graphic>
+                    <HBox spacing="10" alignment="CENTER_LEFT">
+                        <Label text="➕ Ajouter un nouveau propriétaire" style="-fx-text-fill: white; -fx-font-size: 16px;" />
+                    </HBox>
+                </graphic>
+            </Button>
+
+            <Button fx:id="btnVeterinarianList" onAction="#navigateToVeterinarianList" prefWidth="300" prefHeight="50"
+                    style="-fx-background-color: #9b59b6; -fx-text-fill: white; -fx-font-size: 16px;">
+                <graphic>
+                    <HBox spacing="10" alignment="CENTER_LEFT">
+                        <Label text="👨‍⚕️ Liste des vétérinaires" style="-fx-text-fill: white; -fx-font-size: 16px;" />
+                    </HBox>
+                </graphic>
+            </Button>
+
+            <Separator prefWidth="300" />
+
+            <Label text="VetCare 360 - Votre solution complète pour la gestion de clinique vétérinaire"
+                   style="-fx-font-size: 14px; -fx-text-fill: #7f8c8d;" />
+        </VBox>
+    </center>
+
+    <bottom>
+        <HBox alignment="CENTER" style="-fx-background-color: #2e86c1; -fx-padding: 10;">
+            <Label text="© 2025 VetCare 360 - Tous Droits Réservés" style="-fx-text-fill: white;" />
+        </HBox>
+    </bottom>
+</BorderPane>
